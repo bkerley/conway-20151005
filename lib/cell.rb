@@ -1,7 +1,10 @@
-class Cell
-  attr_accessor :state
+require_relative './coordinate'
 
-  def initialize(state)
+class Cell
+  attr_accessor :coordinate, :state
+
+  def initialize(coordinate, state)
+    @coordinate = coordinate
     @state = state
   end
 
@@ -12,7 +15,7 @@ class Cell
 
   def next(neighbors)
     next_state = survives neighbors
-    self.class.new next_state
+    self.class.new coordinate, next_state
   end
 
   def alive?
